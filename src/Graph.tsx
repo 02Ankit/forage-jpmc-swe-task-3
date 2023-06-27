@@ -18,15 +18,16 @@ class Graph extends Component<IProps, {}> {
     return React.createElement('perspective-viewer');
   }
 
+  
   componentDidMount() {
     // Get element from the DOM.
     const elem = document.getElementsByTagName('perspective-viewer')[0] as unknown as PerspectiveViewerElement;
 
     const schema ={
-      // price_abc: 'float',
-      // price_def: 'float',
+      price_abc: 'float',
+      price_def: 'float',
       ratio: 'float',
-      // timestamp: 'date',
+      timestamp: 'date',
       upper_bound: 'float',
       lower_bound: 'float',
       trigger_alert: 'float'
@@ -39,14 +40,14 @@ class Graph extends Component<IProps, {}> {
       // Load the `table` in the `<perspective-viewer>` DOM reference.
       elem.load(this.table);
       elem.setAttribute('view', 'y_line');
-      // elem.setAttribute('row-pivots', '["trigger_alert"]');
+      elem.setAttribute('row-pivots', '["trigger_alert"]');
       elem.setAttribute('columns', '["ratio", "lower_bound", "upper_bound", "trigger_alert]');
       elem.setAttribute('aggregates',
        JSON.stringify({
-        // price_abc: 'avg',
-        // price_def: 'avg',
+        price_abc: 'avg',
+        price_def: 'avg',
         ratio: 'avg',
-        // timestamp: 'distinct count',
+        timestamp: 'distinct count',
         upper_bound: 'avg',
         lower_bound: 'avg',
         trigger_alert: 'avg', 
